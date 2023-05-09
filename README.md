@@ -1,15 +1,15 @@
 <!-- BEGIN_TF_DOCS -->
 [![Geek Cell GmbH](https://raw.githubusercontent.com/geekcell/.github/main/geekcell-github-banner.png)](https://www.geekcell.io/)
 
-<!--
-Comment in these badges if they apply to the repository.
-
 ### Code Quality
 [![License](https://img.shields.io/github/license/geekcell/terraform-aws-datadog-integration)](https://github.com/geekcell/terraform-aws-datadog-integration/blob/master/LICENSE)
 [![GitHub release (latest tag)](https://img.shields.io/github/v/release/geekcell/terraform-aws-datadog-integration?logo=github&sort=semver)](https://github.com/geekcell/terraform-aws-datadog-integration/releases)
 [![Release](https://github.com/geekcell/terraform-aws-datadog-integration/actions/workflows/release.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-datadog-integration/actions/workflows/release.yaml)
 [![Validate](https://github.com/geekcell/terraform-aws-datadog-integration/actions/workflows/validate.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-datadog-integration/actions/workflows/validate.yaml)
 [![Lint](https://github.com/geekcell/terraform-aws-datadog-integration/actions/workflows/linter.yaml/badge.svg)](https://github.com/geekcell/terraform-aws-datadog-integration/actions/workflows/linter.yaml)
+
+<!--
+Comment in these badges if they apply to the repository.
 
 ### Security
 [![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/geekcell/terraform-aws-datadog-integration/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=geekcell%2Fterraform-aws-datadog-integration&benchmark=INFRASTRUCTURE+SECURITY)

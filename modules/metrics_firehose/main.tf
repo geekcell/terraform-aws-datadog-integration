@@ -307,7 +307,7 @@ resource "aws_kinesis_firehose_delivery_stream" "main" {
 #
 resource "aws_cloudwatch_log_group" "main" {
   name              = "/aws/kinesis/${var.prefix}-datadog-metric-stream"
-  retention_in_days = 14
+  retention_in_days = var.cloudwatch_retention_days
 
   tags = var.tags
 }
@@ -343,4 +343,60 @@ resource "aws_s3_bucket_public_access_block" "main" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_versioning" "main" {
+  bucket = aws_s3_bucket.main.id
+  mfa    = var.s3_mfa
+
+  versioning_configuration {
+    status     = var.s3_versioning
+    mfa_delete = var.s3_mfa_delete
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "main" {
+  bucket = aws_s3_bucket.main.bucket
+
+  rule {
+    id     = "expire-non-current-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = var.s3_noncurrent_version_expiration
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "main" {
+  count = var.s3_deny_non_secure_transport ? 1 : 0
+
+  bucket = aws_s3_bucket.main.id
+  policy = data.aws_iam_policy_document.main[0].json
+}
+
+data "aws_iam_policy_document" "main" {
+  count = var.s3_deny_non_secure_transport ? 1 : 0
+
+  statement {
+    actions = ["s3:*"]
+    effect  = "Deny"
+    sid     = "DenyNonSecureTransport"
+
+    resources = [
+      aws_s3_bucket.main.arn,
+      "${aws_s3_bucket.main.arn}/*"
+    ]
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    condition {
+      test     = "Bool"
+      variable = "aws:SecureTransport"
+      values   = ["false"]
+    }
+  }
 }
