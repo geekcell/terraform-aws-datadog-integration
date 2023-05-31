@@ -25,7 +25,7 @@ resource "aws_cloudformation_stack" "main" {
 
   parameters = merge({
     DdApiKeySecretArn = aws_secretsmanager_secret.main.arn
-    DdSite            = "<code class=\"js-region-param region-param\" data-region-param=\"${var.datadog_site}\"></code>"
+    DdSite            = var.datadog_site
     FunctionName      = "${var.prefix}-datadog-log-forwarder"
   }, var.stack_additional_parameters)
 
