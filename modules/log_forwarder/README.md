@@ -10,7 +10,7 @@ recommended way by Datadog.
 |------|-------------|------|---------|:--------:|
 | <a name="input_datadog_api_key"></a> [datadog\_api\_key](#input\_datadog\_api\_key) | Pass an existing Datadog API key to write to the SecretsManager Secret. | `string` | `null` | no |
 | <a name="input_datadog_site"></a> [datadog\_site](#input\_datadog\_site) | Datadog site to use. | `string` | `"datadoghq.eu"` | no |
-| <a name="input_name"></a> [name](#input\_name) | Name to use for resources in this module. | `string` | n/a | yes |
+| <a name="input_prefix"></a> [prefix](#input\_prefix) | Prefix to use for resources in this module. | `string` | n/a | yes |
 | <a name="input_stack_additional_parameters"></a> [stack\_additional\_parameters](#input\_stack\_additional\_parameters) | Additional parameters to pass to the CloudFormation template. | `map(string)` | `{}` | no |
 | <a name="input_stack_capabilities"></a> [stack\_capabilities](#input\_stack\_capabilities) | CloudFormation capabilities required to create the stack. | `list(string)` | <pre>[<br>  "CAPABILITY_IAM",<br>  "CAPABILITY_NAMED_IAM",<br>  "CAPABILITY_AUTO_EXPAND"<br>]</pre> | no |
 | <a name="input_stack_template_url"></a> [stack\_template\_url](#input\_stack\_template\_url) | URL of the CloudFormation template to use to create the stack. | `string` | `"https://datadog-cloudformation-template.s3.amazonaws.com/aws/forwarder/latest.yaml"` | no |
