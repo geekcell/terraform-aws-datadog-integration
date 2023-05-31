@@ -5,7 +5,7 @@
  * recommended way by Datadog.
  */
 resource "aws_secretsmanager_secret" "main" {
-  name        = "${var.name}/api-key"
+  name        = "${var.prefix}-datadog-log-forwarder/api-key"
   description = "Encrypted Datadog API Key."
 
   tags = var.tags
@@ -19,14 +19,14 @@ resource "aws_secretsmanager_secret_version" "main" {
 }
 
 resource "aws_cloudformation_stack" "main" {
-  name         = var.name
+  name         = "${var.prefix}-datadog-log-forwarder"
   capabilities = var.stack_capabilities
   template_url = var.stack_template_url
 
   parameters = merge({
     DdApiKeySecretArn = aws_secretsmanager_secret.main.arn
     DdSite            = "<code class=\"js-region-param region-param\" data-region-param=\"${var.datadog_site}\"></code>"
-    FunctionName      = var.name
+    FunctionName      = "${var.prefix}-datadog-log-forwarder"
   }, var.stack_additional_parameters)
 
   tags = var.tags
