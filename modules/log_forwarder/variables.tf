@@ -1,6 +1,6 @@
 ## NAMING
-variable "name" {
-  description = "Name to use for resources in this module."
+variable "prefix" {
+  description = "Prefix to use for resources in this module."
   type        = string
 }
 
