@@ -43,7 +43,7 @@ resource "aws_cloudformation_stack" "main" {
 }
 
 resource "aws_s3_bucket_versioning" "main" {
-  bucket = aws_cloudformation_stack.main.outputs.ForwarderBucketName
+  bucket = coalesce(var.s3_bucket_name, "${var.prefix}-datadog-log-forwarder")
   mfa    = var.s3_mfa
 
   versioning_configuration {
@@ -55,7 +55,7 @@ resource "aws_s3_bucket_versioning" "main" {
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "main" {
-  bucket = aws_cloudformation_stack.main.outputs.ForwarderBucketName
+  bucket = coalesce(var.s3_bucket_name, "${var.prefix}-datadog-log-forwarder")
 
   rule {
     id     = "expire-non-current-versions"
