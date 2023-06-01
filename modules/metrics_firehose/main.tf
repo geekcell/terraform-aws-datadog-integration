@@ -6,7 +6,7 @@
  * for more information.
  */
 module "firehose_role" {
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1.0"
+  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1"
 
   name        = "${var.prefix}-datadog-firehose"
   description = "Role for Datadog Kinesis Firehose Metric Streams."
@@ -21,7 +21,7 @@ module "firehose_role" {
 }
 
 module "firehose_policy" {
-  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1.0"
+  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1"
 
   name        = "${var.prefix}-datadog-firehose"
   description = "Policy for Datadog Kinesis Firehose Metric Streams."
@@ -63,7 +63,7 @@ module "firehose_policy" {
 # METRIC STREAM ROLE
 #
 module "metric_stream_role" {
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1.0"
+  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1"
 
   name        = "${var.prefix}-datadog-metric-stream"
   description = "Role for Datadog Metric Stream."
@@ -78,7 +78,7 @@ module "metric_stream_role" {
 }
 
 module "metric_stream_policy" {
-  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1.0"
+  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1"
 
   name        = "${var.prefix}-datadog-metric-stream"
   description = "Policy for Datadog Metric Stream."

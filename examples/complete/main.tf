@@ -18,3 +18,12 @@ module "metric_stream" {
   prefix          = "datadog-pro"
   datadog_api_key = var.datadog_api_key
 }
+
+# Deploy the log forwarder Lambda via CloudFormation:
+# https://docs.datadoghq.com/logs/guide/forwarder/?tab=terraform
+module "log_forwarder" {
+  source = "../../modules/log_forwarder"
+
+  prefix          = "datadog-pro"
+  datadog_api_key = var.datadog_api_key
+}

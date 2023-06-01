@@ -6,7 +6,7 @@
  * having to setup an EC2 instance. For more information, see: https://docs.datadoghq.com/database_monitoring/
  */
 module "ecs_agent_container" {
-  source = "github.com/geekcell/terraform-aws-ecs-container-definition?ref=main"
+  source = "github.com/geekcell/terraform-aws-ecs-container-definition?ref=v1"
 
   name  = "datadog-agent"
   image = var.agent_container
@@ -26,7 +26,7 @@ module "ecs_agent_container" {
 }
 
 module "ecs_task_definition" {
-  source = "github.com/geekcell/terraform-aws-ecs-task-definition.git?ref=main"
+  source = "github.com/geekcell/terraform-aws-ecs-task-definition.git?ref=v1"
 
   name                   = var.name
   container_definitions  = [module.ecs_agent_container.hcl]
@@ -78,7 +78,7 @@ resource "aws_secretsmanager_secret" "main" {
 module "ecs_exec_ssm_policy" {
   count = length(var.secretsmanager_secret_keys) > 0 ? 1 : 0
 
-  source = "github.com/geekcell/terraform-aws-iam-policy?ref=main"
+  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1"
 
   name = "${var.name}-ssm-env"
   statements = [

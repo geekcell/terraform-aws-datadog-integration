@@ -50,6 +50,12 @@ for creating the AWS Integration role and the following submodules:
 ### Resource collection
 * Cloud Security Posture Management (can be enabled via the integration role)
 
+### ECS Fargate Agent
+* Scrape DB metrics for DBM
+
+### Log Forwarder Lambda
+* Forward any S3 or CloudWatch logs to Datadog
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -81,9 +87,9 @@ for creating the AWS Integration role and the following submodules:
 
 ## Resources
 
-- resource.aws_iam_role_policy_attachment.csp (main.tf#151)
-- resource.datadog_integration_aws.main (main.tf#22)
-- data source.aws_caller_identity.current (main.tf#14)
+- resource.aws_iam_role_policy_attachment.csp (main.tf#157)
+- resource.datadog_integration_aws.main (main.tf#28)
+- data source.aws_caller_identity.current (main.tf#20)
 
 # Examples
 ### Full
@@ -104,6 +110,15 @@ module "integration" {
 # https://docs.datadoghq.com/integrations/guide/aws-cloudwatch-metric-streams-with-kinesis-data-firehose
 module "metric_stream" {
   source = "../../modules/metrics_firehose"
+
+  prefix          = "datadog-pro"
+  datadog_api_key = var.datadog_api_key
+}
+
+# Deploy the log forwarder Lambda via CloudFormation:
+# https://docs.datadoghq.com/logs/guide/forwarder/?tab=terraform
+module "log_forwarder" {
+  source = "../../modules/log_forwarder"
 
   prefix          = "datadog-pro"
   datadog_api_key = var.datadog_api_key
