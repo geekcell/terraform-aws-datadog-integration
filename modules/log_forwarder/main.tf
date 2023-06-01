@@ -24,10 +24,47 @@ resource "aws_cloudformation_stack" "main" {
   template_url = var.stack_template_url
 
   parameters = merge({
+    # Datadog
     DdApiKeySecretArn = aws_secretsmanager_secret.main.arn
     DdSite            = var.datadog_site
-    FunctionName      = "${var.prefix}-datadog-log-forwarder"
+
+    # Lambda
+    FunctionName        = coalesce(var.lambda_function_name, "${var.prefix}-datadog-log-forwarder")
+    MemorySize          = var.lambda_memory_size
+    Timeout             = var.lambda_timeout
+    LogRetentionInDays  = var.lambda_log_retention_days
+    ReservedConcurrency = var.lambda_reserved_concurrency
+
+    # Bucket
+    DdForwarderBucketName = var.s3_bucket_name
   }, var.stack_additional_parameters)
 
   tags = var.tags
+}
+
+resource "aws_s3_bucket_versioning" "main" {
+  bucket = aws_cloudformation_stack.main.outputs.ForwarderBucketName
+  mfa    = var.s3_mfa
+
+  versioning_configuration {
+    status     = var.s3_versioning
+    mfa_delete = var.s3_mfa_delete
+  }
+
+  depends_on = [aws_cloudformation_stack.main]
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "main" {
+  bucket = aws_cloudformation_stack.main.outputs.ForwarderBucketName
+
+  rule {
+    id     = "expire-non-current-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = var.s3_noncurrent_version_expiration
+    }
+  }
+
+  depends_on = [aws_cloudformation_stack.main]
 }

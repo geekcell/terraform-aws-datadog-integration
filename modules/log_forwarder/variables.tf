@@ -40,3 +40,65 @@ variable "stack_additional_parameters" {
   default     = {}
   type        = map(string)
 }
+
+## LAMBDA
+variable "lambda_function_name" {
+  description = "The name of the Lambda function."
+  default     = null
+  type        = string
+}
+
+variable "lambda_reserved_concurrency" {
+  description = "The number of concurrent executions reserved for the Lambda."
+  default     = null
+  type        = number
+}
+
+variable "lambda_log_retention_days" {
+  description = "The number of days to retain log events for the Lambda in Cloudwatch."
+  default     = 90
+  type        = number
+}
+
+variable "lambda_timeout" {
+  description = "The amount of time the Lambda function has to run in seconds."
+  default     = 120
+  type        = number
+}
+
+variable "lambda_memory_size" {
+  description = "Amount of memory to allocate to the Lambda function."
+  default     = 1024
+  type        = number
+}
+
+## S3
+variable "s3_bucket_name" {
+  description = "The name of the S3 forwarder bucket to create."
+  default     = null
+  type        = string
+}
+
+variable "s3_versioning" {
+  description = "Enable S3 Versioning for the forwarder bucket."
+  default     = "Enabled"
+  type        = string
+}
+
+variable "s3_noncurrent_version_expiration" {
+  description = "Specifies when non-current object versions expire in the forwarder bucket."
+  default     = 30
+  type        = number
+}
+
+variable "s3_mfa" {
+  description = "MFA device ARN including a TOTP token to enable MFA delete for the forwarder bucket."
+  default     = null
+  type        = string
+}
+
+variable "s3_mfa_delete" {
+  description = "Enable MFA Delete for the forwarder bucket."
+  default     = "Disabled"
+  type        = string
+}
