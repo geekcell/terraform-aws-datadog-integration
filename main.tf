@@ -10,6 +10,12 @@
  *
  * ### Resource collection
  * * Cloud Security Posture Management (can be enabled via the integration role)
+ *
+ * ### ECS Fargate Agent
+ * * Scrape DB metrics for DBM
+ *
+ * ### Log Forwarder Lambda
+ * * Forward any S3 or CloudWatch logs to Datadog
  */
 data "aws_caller_identity" "current" {
   count = var.aws_account_id == null ? 1 : 0
