@@ -36,7 +36,7 @@ resource "aws_cloudformation_stack" "main" {
     ReservedConcurrency = var.lambda_reserved_concurrency
 
     # Bucket
-    DdForwarderBucketName = var.s3_bucket_name
+    DdForwarderBucketName = coalesce(var.s3_bucket_name, "${var.prefix}-datadog-log-forwarder")
   }, var.stack_additional_parameters)
 
   tags = var.tags
