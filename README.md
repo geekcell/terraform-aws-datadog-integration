@@ -87,7 +87,7 @@ for creating the AWS Integration role and the following submodules:
 
 ## Resources
 
-- resource.aws_iam_role_policy_attachment.csp (main.tf#157)
+- resource.aws_iam_role_policy_attachment.csp (main.tf#159)
 - resource.datadog_integration_aws.main (main.tf#28)
 - data source.aws_caller_identity.current (main.tf#20)
 
