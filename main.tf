@@ -111,6 +111,7 @@ module "integration_policy" {
         "health:DescribeAffectedEntities",
         "kinesis:List*",
         "kinesis:Describe*",
+        "kms:GetKeyRotationStatus",
         "lambda:GetPolicy",
         "lambda:List*",
         "logs:DeleteSubscriptionFilter",
@@ -144,6 +145,7 @@ module "integration_policy" {
         "tag:GetResources",
         "tag:GetTagKeys",
         "tag:GetTagValues",
+        "wafv2:GetLoggingConfiguration",
         "xray:BatchGetTraces",
         "xray:GetTraceSummaries",
       ]

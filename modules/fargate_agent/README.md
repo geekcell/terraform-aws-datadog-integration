@@ -58,14 +58,14 @@ having to setup an EC2 instance. For more information, see: https://docs.datadog
 ```hcl
 module "vpc" {
   source  = "registry.terraform.io/terraform-aws-modules/vpc/aws"
-  version = "~> 3.19"
+  version = "~> 5.0"
 
   name = "main"
   cidr = "10.100.0.0/16"
 }
 
 module "ecs_cluster" {
-  source = "github.com/geekcell/terraform-aws-ecs-cluster?ref=main"
+  source = "github.com/geekcell/terraform-aws-ecs-cluster?ref=v1"
 
   name = "my-ecs-cluster"
 }
@@ -127,7 +127,7 @@ module "datadog_agent" {
 }
 
 module "datadog_agent_security_group" {
-  source = "github.com/geekcell/terraform-aws-security-group?ref=main"
+  source = "github.com/geekcell/terraform-aws-security-group?ref=v1"
 
   name   = "datadog-ecs-dd-agent"
   vpc_id = module.vpc.private_subnets
