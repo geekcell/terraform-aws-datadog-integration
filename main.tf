@@ -6,15 +6,15 @@
  *
  * ### Metric collection
  * * Metric polling (out of the box with integration role)
- * * Metric streams with Kinesis Firehose
+ * * [Metric streams with Kinesis Firehose](./modules/metric_streams/README.md)
  *
  * ### Resource collection
  * * Cloud Security Posture Management (can be enabled via the integration role)
  *
- * ### ECS Fargate Agent
+ * ### [ECS Fargate Agent:](./modules/fargate_agent/README.md)
  * * Scrape DB metrics for DBM
  *
- * ### Log Forwarder Lambda
+ * ### [Log Forwarder Lambda:](./modules/log_forwarder/README.md)
  * * Forward any S3 or CloudWatch logs to Datadog
  */
 data "aws_caller_identity" "current" {
@@ -40,7 +40,8 @@ resource "datadog_integration_aws" "main" {
 }
 
 module "integration_role" {
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1.0"
+  source  = "geekcell/iam-role/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = local.datadog_integration_role_name
   use_name_prefix = false
@@ -63,7 +64,8 @@ module "integration_role" {
 }
 
 module "integration_policy" {
-  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1.0"
+  source  = "geekcell/iam-policy/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name        = "${var.prefix}-datadog-integration"
   description = "Policy for Datadog AWS Integration"

@@ -49,9 +49,9 @@ having to setup an EC2 instance. For more information, see: https://docs.datadog
 
 ## Resources
 
-- resource.aws_ecs_service.main (modules/fargate_agent/main.tf#44)
-- resource.aws_iam_role_policy_attachment.ecs_exec_ssm_policy (modules/fargate_agent/main.tf#96)
-- resource.aws_secretsmanager_secret.main (modules/fargate_agent/main.tf#71)
+- resource.aws_ecs_service.main (modules/fargate_agent/main.tf#46)
+- resource.aws_iam_role_policy_attachment.ecs_exec_ssm_policy (modules/fargate_agent/main.tf#99)
+- resource.aws_secretsmanager_secret.main (modules/fargate_agent/main.tf#73)
 
 # Examples
 ### Full
