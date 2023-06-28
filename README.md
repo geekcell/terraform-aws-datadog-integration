@@ -45,15 +45,15 @@ for creating the AWS Integration role and the following submodules:
 
 ### Metric collection
 * Metric polling (out of the box with integration role)
-* Metric streams with Kinesis Firehose
+* [Metric streams with Kinesis Firehose](./modules/metric\_streams/README.md)
 
 ### Resource collection
 * Cloud Security Posture Management (can be enabled via the integration role)
 
-### ECS Fargate Agent
+### [ECS Fargate Agent:](./modules/fargate\_agent/README.md)
 * Scrape DB metrics for DBM
 
-### Log Forwarder Lambda
+### [Log Forwarder Lambda:](./modules/log\_forwarder/README.md)
 * Forward any S3 or CloudWatch logs to Datadog
 
 ## Inputs
