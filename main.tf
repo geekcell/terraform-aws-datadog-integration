@@ -40,7 +40,8 @@ resource "datadog_integration_aws" "main" {
 }
 
 module "integration_role" {
-  source = "github.com/geekcell/terraform-aws-iam-role?ref=v1.0"
+  source  = "geekcell/iam-role/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name            = local.datadog_integration_role_name
   use_name_prefix = false
@@ -63,7 +64,8 @@ module "integration_role" {
 }
 
 module "integration_policy" {
-  source = "github.com/geekcell/terraform-aws-iam-policy?ref=v1.0"
+  source  = "geekcell/iam-policy/aws"
+  version = ">= 1.0.0, < 2.0.0"
 
   name        = "${var.prefix}-datadog-integration"
   description = "Policy for Datadog AWS Integration"
