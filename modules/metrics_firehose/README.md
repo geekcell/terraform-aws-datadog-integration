@@ -34,16 +34,15 @@ No outputs.
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (modules/metrics_firehose/main.tf#312)
-- resource.aws_cloudwatch_log_stream.http_endpoint (modules/metrics_firehose/main.tf#319)
-- resource.aws_cloudwatch_log_stream.s3_backup (modules/metrics_firehose/main.tf#324)
+- resource.aws_cloudwatch_log_group.main (modules/metrics_firehose/main.tf#320)
+- resource.aws_cloudwatch_log_stream.http_endpoint (modules/metrics_firehose/main.tf#327)
+- resource.aws_cloudwatch_log_stream.s3_backup (modules/metrics_firehose/main.tf#332)
 - resource.aws_cloudwatch_metric_stream.main (modules/metrics_firehose/main.tf#107)
 - resource.aws_kinesis_firehose_delivery_stream.main (modules/metrics_firehose/main.tf#261)
-- resource.aws_s3_bucket.main (modules/metrics_firehose/main.tf#332)
-- resource.aws_s3_bucket_acl.main (modules/metrics_firehose/main.tf#338)
-- resource.aws_s3_bucket_lifecycle_configuration.main (modules/metrics_firehose/main.tf#362)
-- resource.aws_s3_bucket_policy.main (modules/metrics_firehose/main.tf#375)
-- resource.aws_s3_bucket_public_access_block.main (modules/metrics_firehose/main.tf#343)
-- resource.aws_s3_bucket_versioning.main (modules/metrics_firehose/main.tf#352)
-- data source.aws_iam_policy_document.main (modules/metrics_firehose/main.tf#382)
+- resource.aws_s3_bucket.main (modules/metrics_firehose/main.tf#340)
+- resource.aws_s3_bucket_lifecycle_configuration.main (modules/metrics_firehose/main.tf#365)
+- resource.aws_s3_bucket_policy.main (modules/metrics_firehose/main.tf#378)
+- resource.aws_s3_bucket_public_access_block.main (modules/metrics_firehose/main.tf#346)
+- resource.aws_s3_bucket_versioning.main (modules/metrics_firehose/main.tf#355)
+- data source.aws_iam_policy_document.main (modules/metrics_firehose/main.tf#385)
 <!-- END_TF_DOCS -->

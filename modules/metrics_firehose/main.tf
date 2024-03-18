@@ -262,10 +262,10 @@ resource "aws_kinesis_firehose_delivery_stream" "main" {
   name        = "${var.prefix}-datadog-metric-stream"
   destination = "http_endpoint"
 
-  s3_configuration {
+  extended_s3_configuration {
     bucket_arn          = aws_s3_bucket.main.arn
-    buffer_size         = 4
-    buffer_interval     = 60
+    buffering_size      = 4
+    buffering_interval  = 60
     compression_format  = "GZIP"
     role_arn            = module.firehose_role.arn
     error_output_prefix = "datadog-stream"
@@ -287,14 +287,22 @@ resource "aws_kinesis_firehose_delivery_stream" "main" {
     s3_backup_mode     = "FailedDataOnly"
     role_arn           = module.firehose_role.arn
 
-    request_configuration {
-      content_encoding = "GZIP"
-    }
-
     cloudwatch_logging_options {
       enabled         = true
       log_group_name  = aws_cloudwatch_log_group.main.name
       log_stream_name = aws_cloudwatch_log_stream.http_endpoint.name
+    }
+
+    request_configuration {
+      content_encoding = "GZIP"
+    }
+
+    s3_configuration {
+      role_arn           = module.firehose_role.arn
+      bucket_arn         = aws_s3_bucket.main.arn
+      buffering_size     = 10
+      buffering_interval = 400
+      compression_format = "GZIP"
     }
   }
 
@@ -333,11 +341,6 @@ resource "aws_s3_bucket" "main" {
   bucket = "${var.prefix}-datadog-metric-stream-backup"
 
   tags = var.tags
-}
-
-resource "aws_s3_bucket_acl" "main" {
-  bucket = aws_s3_bucket.main.id
-  acl    = "private"
 }
 
 resource "aws_s3_bucket_public_access_block" "main" {
