@@ -48,13 +48,13 @@ recommended way by Datadog.
 - resource.aws_secretsmanager_secret_version.main (modules/log_forwarder/main.tf#14)
 
 # Examples
-### Full
-```hcl
-module "datadog_log_forwarder" {
+  ### Full
+  ```hcl
+  module "datadog_log_forwarder" {
   source = "../../"
 
   prefix          = "production-core"
   datadog_api_key = "1234567890abcdef"
 }
-```
+  ```
 <!-- END_TF_DOCS -->
