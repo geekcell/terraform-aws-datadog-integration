@@ -21,6 +21,7 @@ for more information.
 | <a name="input_s3_noncurrent_version_expiration"></a> [s3\_noncurrent\_version\_expiration](#input\_s3\_noncurrent\_version\_expiration) | Number of days non-current versions of objects will remain in the S3 Metric Stream Backup bucket. | `number` | `30` | no |
 | <a name="input_s3_versioning"></a> [s3\_versioning](#input\_s3\_versioning) | Enable S3 Versioning for the S3 Metric Stream Backup bucket. | `string` | `"Enabled"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to add to the created resources. | `map(any)` | `{}` | no |
+| <a name="input_use_name_prefix"></a> [use\_name\_prefix](#input\_use\_name\_prefix) | Use name prefix for IAM roles. | `bool` | `true` | no |
 
 ## Outputs
 
@@ -34,15 +35,15 @@ No outputs.
 
 ## Resources
 
-- resource.aws_cloudwatch_log_group.main (modules/metrics_firehose/main.tf#320)
-- resource.aws_cloudwatch_log_stream.http_endpoint (modules/metrics_firehose/main.tf#327)
-- resource.aws_cloudwatch_log_stream.s3_backup (modules/metrics_firehose/main.tf#332)
-- resource.aws_cloudwatch_metric_stream.main (modules/metrics_firehose/main.tf#107)
-- resource.aws_kinesis_firehose_delivery_stream.main (modules/metrics_firehose/main.tf#261)
-- resource.aws_s3_bucket.main (modules/metrics_firehose/main.tf#340)
-- resource.aws_s3_bucket_lifecycle_configuration.main (modules/metrics_firehose/main.tf#365)
-- resource.aws_s3_bucket_policy.main (modules/metrics_firehose/main.tf#378)
-- resource.aws_s3_bucket_public_access_block.main (modules/metrics_firehose/main.tf#346)
-- resource.aws_s3_bucket_versioning.main (modules/metrics_firehose/main.tf#355)
-- data source.aws_iam_policy_document.main (modules/metrics_firehose/main.tf#385)
+- resource.aws_cloudwatch_log_group.main (modules/metrics_firehose/main.tf#322)
+- resource.aws_cloudwatch_log_stream.http_endpoint (modules/metrics_firehose/main.tf#329)
+- resource.aws_cloudwatch_log_stream.s3_backup (modules/metrics_firehose/main.tf#334)
+- resource.aws_cloudwatch_metric_stream.main (modules/metrics_firehose/main.tf#109)
+- resource.aws_kinesis_firehose_delivery_stream.main (modules/metrics_firehose/main.tf#263)
+- resource.aws_s3_bucket.main (modules/metrics_firehose/main.tf#342)
+- resource.aws_s3_bucket_lifecycle_configuration.main (modules/metrics_firehose/main.tf#367)
+- resource.aws_s3_bucket_policy.main (modules/metrics_firehose/main.tf#380)
+- resource.aws_s3_bucket_public_access_block.main (modules/metrics_firehose/main.tf#348)
+- resource.aws_s3_bucket_versioning.main (modules/metrics_firehose/main.tf#357)
+- data source.aws_iam_policy_document.main (modules/metrics_firehose/main.tf#387)
 <!-- END_TF_DOCS -->

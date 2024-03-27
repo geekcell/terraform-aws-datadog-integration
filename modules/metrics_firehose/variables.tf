@@ -71,3 +71,9 @@ variable "s3_mfa_delete" {
   default     = "Disabled"
   type        = string
 }
+
+variable "use_name_prefix" {
+  description = "Use name prefix for IAM roles."
+  default     = true
+  type        = bool
+}

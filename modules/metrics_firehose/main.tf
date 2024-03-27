@@ -9,9 +9,10 @@ module "firehose_role" {
   source  = "geekcell/iam-role/aws"
   version = ">= 1.0.0, < 2.0.0"
 
-  name        = "${var.prefix}-datadog-firehose"
-  description = "Role for Datadog Kinesis Firehose Metric Streams."
-  policy_arns = [module.firehose_policy.arn]
+  name            = "${var.prefix}-datadog-firehose"
+  use_name_prefix = var.use_name_prefix
+  description     = "Role for Datadog Kinesis Firehose Metric Streams."
+  policy_arns     = [module.firehose_policy.arn]
   assume_roles = {
     "Service" : {
       identifiers = ["firehose.amazonaws.com"]
@@ -68,9 +69,10 @@ module "metric_stream_role" {
   source  = "geekcell/iam-role/aws"
   version = ">= 1.0.0, < 2.0.0"
 
-  name        = "${var.prefix}-datadog-metric-stream"
-  description = "Role for Datadog Metric Stream."
-  policy_arns = [module.metric_stream_policy.arn]
+  name            = "${var.prefix}-datadog-metric-stream"
+  use_name_prefix = var.use_name_prefix
+  description     = "Role for Datadog Metric Stream."
+  policy_arns     = [module.metric_stream_policy.arn]
   assume_roles = {
     "Service" : {
       identifiers = ["streams.metrics.cloudwatch.amazonaws.com"]
