@@ -92,9 +92,9 @@ for creating the AWS Integration role and the following submodules:
 - data source.aws_caller_identity.current (main.tf#20)
 
 # Examples
-### Full
-```hcl
-# Can be configured via ENV vars. See: https://registry.terraform.io/providers/DataDog/datadog/latest/docs#optional
+  ### Full
+  ```hcl
+  # Can be configured via ENV vars. See: https://registry.terraform.io/providers/DataDog/datadog/latest/docs#optional
 provider "datadog" {}
 provider "aws" {}
 
@@ -123,5 +123,5 @@ module "log_forwarder" {
   prefix          = "datadog-pro"
   datadog_api_key = var.datadog_api_key
 }
-```
+  ```
 <!-- END_TF_DOCS -->

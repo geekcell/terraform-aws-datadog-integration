@@ -54,9 +54,9 @@ having to setup an EC2 instance. For more information, see: https://docs.datadog
 - resource.aws_secretsmanager_secret.main (modules/fargate_agent/main.tf#73)
 
 # Examples
-### Full
-```hcl
-module "vpc" {
+  ### Full
+  ```hcl
+  module "vpc" {
   source  = "registry.terraform.io/terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
@@ -151,5 +151,5 @@ module "datadog_agent_security_group" {
     }
   ]
 }
-```
+  ```
 <!-- END_TF_DOCS -->
